@@ -782,7 +782,7 @@ int main(){
 }
 */
 
-/* 3052번*/
+/* 3052번
 
 #define _CRT_SECURE_NO_WARNING
 #include <stdio.h>
@@ -807,4 +807,33 @@ int main(){
     printf("%d", cnt);
 
     return 0;
+}
+*/
+
+/* 10811번*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    int N, M, i, j, temp;
+    scanf("%d %d", &N, &M);
+    int arr[N + 1];
+
+    for (int a = 1; a <= N; a++){
+        arr[a] = a;
+    }
+
+    for (int b = 1; b <= M; b++){
+        scanf("%d %d", &i, &j);
+        for (int c = 0; c < ((j - i + 1)/2); c++){
+            temp = arr[c + i];
+            arr[c + i] = arr[j - c];
+            arr[j - c] = temp;
+        }
+    }
+
+    for (int x = 1; x <= N; x++){
+        printf("%d ", arr[x]);                                     // 계속 틀린 이유: &arr[x] 이지랄...
+    }
 }
