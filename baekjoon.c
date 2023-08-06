@@ -810,7 +810,7 @@ int main(){
 }
 */
 
-/* 10811번*/
+/* 10811번
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -837,3 +837,40 @@ int main(){
         printf("%d ", arr[x]);                                     // 계속 틀린 이유: &arr[x] 이지랄...
     }
 }
+*/
+
+/* 1546번
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    int N;
+    double avg;
+    double sum = 0;
+    scanf("%d", &N);
+    int arr[N + 1];
+    double score[N + 1];
+    double max = 0;
+
+    for (int a = 1; a <= N; a++){
+        scanf("%d", &arr[a]);
+        if (max < arr[a]){
+            max = arr[a];
+        }
+    }
+
+    for (int b = 1; b <= N; b++){
+        score[b] = 100 * arr[b] / max;
+    }
+
+    for (int c = 1; c <= N; c++){
+        sum += score[c];
+    }
+
+    printf("%lf", sum / N);
+
+    return 0;
+}
+*/
+
