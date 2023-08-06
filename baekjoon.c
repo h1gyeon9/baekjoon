@@ -874,3 +874,112 @@ int main(){
 }
 */
 
+/* 27866번
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    char str[1000];
+    int i;
+
+    scanf("%s", &str);
+    scanf("%d", &i);
+
+    printf("%c", str[i-1]);            // 문자열도 배열 처럼 0번째 자리부터 시작
+
+    return 0;
+}
+*/
+
+/* 2743번
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    char str[100];
+    int leng = 0;
+
+    scanf("%s", &str);
+
+    for (int i = 0; str[i] != 0; i++){               // string.h 쓰지 않으면 일일히 구해야함 sizeof 하면 처음에 str[100]으로 지정해줬기 때문에 문자열이 들어가지 않은 부분의 사이즈까지도 다 측정해버림
+        leng++;
+    }
+
+    printf("%d", leng);
+}
+*/
+
+/* 9086번
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    int T;
+    char str[1000];
+    char last;
+    scanf("%d", &T);
+
+    for (int i = 0; i < T; i++){
+        scanf("%s", &str);
+        for (int j = 0; str[j] != 0; j++){
+            last = str[j];
+        }
+        printf("%c%c\n", str[0], last);
+    }
+}
+*/
+
+/* 11654번
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    char A;
+    scanf("%c", &A);
+    printf("%d", A);
+}
+*/
+
+/* 11720번
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    int N;
+    scanf("%d", &N);
+    char str[N+1];
+    scanf("%s", &str);
+    int num;
+    int sum = 0;
+
+    for (int i = 0; i < N; i++){
+        num = str[i] - '0';
+        sum += num;
+    }
+
+    printf("%d", sum);
+}
+*/
+
+/* 10809번*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    char str[100];
+    scanf("%s", &str);
+    int arr[25] = {-1, };
+
+    for (int i = 0; str[i] != 0; i++){
+        for (int j = 97; j <= 122; j++){
+            if (str[i] == j){
+                arr[j - 97] = i;
+            }
+        }
+    }
+
+    for (int k = 0; k < 26; k++){
+        printf("%d ", arr[k]);
+    }
+}
