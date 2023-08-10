@@ -962,24 +962,61 @@ int main(){
 }
 */
 
-/* 10809번*/
+/* 10809번
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main(){
-    char str[100];
+    char str[100] = {0, };                                  // 문자열
     scanf("%s", &str);
-    int arr[25] = {-1, };
+    int arr[25];                                            // 알파벳 위치 표현하는 배열
 
-    for (int i = 0; str[i] != 0; i++){
-        for (int j = 97; j <= 122; j++){
-            if (str[i] == j){
-                arr[j - 97] = i;
+    for (int a = 0; a < 26; a++){                           // -1로 초기화 * arr[a] = {-1, }; 하면 안됨!!
+        arr[a] = -1;
+    }
+
+        for (int i = 0; str[i] != 0; i++)                   // 문자열의 i번째 알파벳에 대해
+        {
+            for (int j = 97; j <= 122; j++)                 // a부터 z까지 일치하는 것이 있는지 검사
+            {
+                if (str[i] == j && arr[j-97] == -1)         // 만약 i번째 알파벳이 a~z 중 하나이며, 위치 표현 배열이 -1이 아니라면 (= i번째 알파벳이 처음으로 등장한 것이라면)
+                {
+                    arr[j - 97] = i;                        // 위치 표현 배열에 i를 저장
+                }
             }
         }
-    }
 
     for (int k = 0; k < 26; k++){
         printf("%d ", arr[k]);
     }
+}*/
+
+/* 2675번*/
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(){
+    int T, R;
+    char str[20];
+
+    for (int x = 0; x < 20; x++){
+        str[x] = -1;
+    }
+
+    scanf("%d", &T);
+
+    for (int i = 0; i < T; i++){
+        scanf("%d %s", &R, &str);
+
+        for (int j = 0; str[j] != -1; j++){              // 문자열 끝에 도달할 때까지
+            for (int k = 0; k < R; k++){                 // R번 반복해 출력
+                printf("%c", str[j]);
+            }
+        }
+
+        printf("\n");
+    }
 }
+
+// 개행문자 추가하고 문자열에 0이 들어갈 수 있으니 문자열을 -1로 초기화 후 -1이 아닐 때까지로 수정함 -> 출력초과 뜸 뭐가 문제냐고
